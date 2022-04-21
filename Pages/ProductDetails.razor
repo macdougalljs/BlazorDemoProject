@@ -1,0 +1,11 @@
+<!-- populate parameters from the route -->
+
+@page "/products/{id:int}"
+<h1>Details for product @Id</h1>
+
+@code {
+    [Parameter]
+    public int Id {get; set; }
+
+
+}

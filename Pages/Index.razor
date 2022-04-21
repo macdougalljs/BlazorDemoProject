@@ -1,0 +1,44 @@
+﻿@page "/"
+<PageTitle>Index</PageTitle>
+<WelcomeMessage name="Simon"/>    <!-- pass data between parameters -->
+<div class="container">
+@if(!_submitted) {
+    <div class="row">
+        <div class="col-sm-3"><label>What's your name?</label></div>
+        <div class="col-sm-4"><input type="text" @bind-value="_name" @bind-value:event="oninput" /></div>
+    </div>
+<br>
+ <div class="row">
+        <div class="col-sm-3"><label>What is your email address?</label></div>
+        <div class="col-sm-4"><input type="text" @bind-value="_email" /></div>
+    </div>
+
+
+<button @onclick="HandleSubmit">Submit</button><br><br>
+<label>Welcome to your new app.</label>
+<h1>Hello, @_name.ToUpper()</h1>
+
+}
+else {
+    <label>Thanks for submitting your details!</label>
+}
+</div>
+<SurveyPrompt Title="How is Blazor working for you?" />
+<h2>Rendering child content with Render Fragments</h2>
+<Card title="Up and running with Blazor">Learn Blazor Now!</Card>
+
+@code {
+
+private string? _email;
+private string _name = "Bob"; 
+private bool _submitted;
+
+
+private void HandleSubmit() {
+
+Console.WriteLine("Submitted Form "+ _email);
+_submitted = true;
+}
+
+
+}
